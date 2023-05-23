@@ -1,0 +1,33 @@
+<div *ngIf="!!cartItem" [ngClass]="'cart-item container-fluid'">
+  <div [ngClass]="'row'">
+    <div [ngClass]="'col-2'">
+      <img [ngClass]="'cart-item-img'" src="{{ cartItem.product.url}}" alt="{{ cartItem.product.name }}" />
+    </div>
+    <div [ngClass]="'col-10'">
+      <div [ngClass]="'w-100 d-flex justify-content-between align-items-center'">
+        <div [ngClass]="'cart-item-info'">
+          <h2>{{ cartItem.product.name }}</h2>
+          <div [ngClass]="'input-group mb-3 pdp-quantity-input-group'">
+            <button [ngClass]="'btn btn-outline-secondary'" type="button" (click)="handleBtnClick('dec')">
+              -
+            </button>
+            <input
+              type="text"
+              [ngClass]="'form-control pdp-quantity-input text-center'"
+              value="{{ cartItem.quantity }}"
+              (change)="handleInputChange($event)"
+              placeholder=""
+              aria-label="Example text with two button addons"
+            />
+            <button [ngClass]="'btn btn-outline-secondary'" type="button" (click)="handleBtnClick('inc')">
+              +
+            </button>
+          </div>
+        </div>
+        <div [ngClass]="'cart-item-price fs-5'">
+          $ {{ getFinalPrice() }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

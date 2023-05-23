@@ -1,0 +1,128 @@
+<div [ngClass]="'row'">
+  <div [ngClass]="'col-12 col-md-6'">
+    <div [ngClass]="'cart-wrapper d-flex flex-column'">
+      <h1 [ngClass]="'cart-header w-100 text-center'">Review your cart</h1>
+      <div
+        [ngClass]="
+          'cart-content w-100 d-flex flex-column align-items-center justify-content-center'
+        "
+      >
+        <ng-container *ngIf="cartItems.length === 0">
+          <h2>Your cart is empty!</h2>
+          <p>Continue shopping <a routerLink="/">here</a>!</p>
+        </ng-container>
+        <ng-container *ngIf="cartItems.length > 0">
+          <ul [ngClass]="'cart-list'">
+            <li *ngFor="let cartItem of cartItems" [ngClass]="'cart-list-item'">
+              <app-cart-item [cartItem]="cartItem"></app-cart-item>
+            </li>
+          </ul>
+        </ng-container>
+      </div>
+      <div
+        *ngIf="cartItems.length > 0"
+        [ngClass]="'cart-footer d-flex flex-column align-items-center m-auto'"
+      >
+        <div
+          [ngClass]="
+            'm-auto cart-total-price text-center d-flex justify-content-between align-items-center'
+          "
+        >
+          <h2>Total</h2>
+          <p [ngClass]="'fs-5'">$ {{ getTotalPrice() }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="'col-12 col-md-6'">
+    <div [ngClass]="'cart-wrapper'">
+      <h1 [ngClass]="'cart-header w-100 text-center'">Purchase information</h1>
+      <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control form-control-lg"
+            id="name"
+            name="name"
+            placeholder="Your name"
+          />
+          <div
+            *ngIf="
+              (checkoutForm['controls'].name.touched || !validForm) &&
+              checkoutForm['controls'].name.invalid
+            "
+          >
+            <p
+              *ngIf="checkoutForm['controls'].name.errors?.['required']"
+              [ngClass]="'error'"
+            >
+              Required
+            </p>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            id="address"
+            name="address"
+            placeholder="Your address"
+            formControlName="address"
+          />
+          <div
+            *ngIf="
+              (checkoutForm['controls'].address.touched || !validForm) &&
+              checkoutForm['controls'].address.invalid
+            "
+          >
+            <p
+              *ngIf="checkoutForm['controls'].name.errors?.['required']"
+              [ngClass]="'error'"
+            >
+              Required
+            </p>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control form-control-lg"
+            id="email"
+            name="email"
+            placeholder="Your email"
+            formControlName="email"
+          />
+          <div
+            *ngIf="
+              (checkoutForm['controls'].email.touched || !validForm) &&
+              checkoutForm['controls'].email.invalid
+            "
+          >
+            <p
+              *ngIf="checkoutForm['controls'].email.errors?.['required']"
+              [ngClass]="'error'"
+            >
+              Required
+            </p>
+            <p
+              *ngIf="checkoutForm['controls'].email.errors?.['pattern']"
+              [ngClass]="'error'"
+            >
+              Invalid email
+            </p>
+          </div>
+        </div>
+        <button
+          [ngClass]="'btn btn-primary cart-checkout-btn p-2 fs-5'"
+          type="submit"
+        >
+          Purchase
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

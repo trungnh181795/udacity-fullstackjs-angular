@@ -1,0 +1,5 @@
+<ul [ngClass]="'row product-list'">
+  <li *ngFor="let product of products" [ngClass]="'col-sm-12 col-md-3 mb-4 h-100 product-list-item'">
+    <app-product-item [product]="product"></app-product-item>
+  </li>
+</ul>

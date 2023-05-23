@@ -1,0 +1,35 @@
+.pdp {
+  &-quantity-input-group {
+    width: 150px;
+  }
+
+  &-quantity-input {
+    border-color: #6c757d;
+    border: 1px solid;
+  }
+
+  &-id {
+    font-size: 16px;
+
+    &-span {
+      font-weight: 700;
+    }
+  }
+
+  &-name {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  &-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: red;
+    margin-bottom: 24px;
+  }
+
+  &-desc {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+}

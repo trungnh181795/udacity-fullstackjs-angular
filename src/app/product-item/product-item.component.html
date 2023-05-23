@@ -1,0 +1,27 @@
+<ng-container *ngIf="!!product">
+  <div [ngClass]="'w-100 h-100 card'">
+    <a routerLink="products/{{ product.id }}">
+      <img
+        [ngClass]="'card-img-top'"
+        src="{{ product.url }}"
+        alt="{{ product.name }}"
+      />
+    </a>
+    <div [ngClass]="'card-body d-flex flex-column justify-content-between'">
+      <div>
+        <a [ngClass]="'product-item-link'" routerLink="products/{{ product.id }}">
+          <h2 [ngClass]="'card-title'">{{ product.name }}</h2>
+          <p [ngClass]="'card-text'">{{ product.description }}</p>
+        </a>
+      </div>
+      <div
+        [ngClass]="
+          'mt-4 w-100 d-flex justify-content-between align-items-center'
+        "
+      >
+        <button [ngClass]="'btn btn-primary'" type="button" (click)="addToCart()">Add to cart</button>
+        <div [ngClass]="'product-item-price'">{{ product.price }} $</div>
+      </div>
+    </div>
+  </div>
+</ng-container>

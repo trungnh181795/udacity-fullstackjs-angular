@@ -1,0 +1,13 @@
+<header>
+  <nav [ngClass]="'navbar'">
+    <a [ngClass]="'navbar-logo'" routerLink="/">My Shop</a>
+    <div [ngClass]="'navbar-cart'">
+      <a routerLink="cart">
+        <button [ngClass]="'navbar-cart-btn'" type="button">
+          <i [ngClass]="'fa fa-shopping-cart navbar-cart-btn-icon'"></i>
+        </button>
+      </a>
+      <span [ngClass]="'navbar-cart-badge'">{{ cartItemCount }}</span>
+    </div>
+  </nav>
+</header>

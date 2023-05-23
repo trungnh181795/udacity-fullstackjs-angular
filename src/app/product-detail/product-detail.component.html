@@ -1,0 +1,41 @@
+<div [ngClass]="'container'">
+  <div *ngIf="!!product" [ngClass]="'row'">
+    <div [ngClass]="'col-12 col-md-5'">
+      <img
+        [ngClass]="'img-thumbnail'"
+        src="{{ product.url }}"
+        alt="{{ product.name }}"
+      />
+    </div>
+    <div [ngClass]="'col-12 col-md-7'">
+      <p [ngClass]="'pdp-id'">
+        ID: <span [ngClass]="'pdp-id-span'">{{ product.id }}</span>
+      </p>
+      <h1 [ngClass]="'pdp-name'">{{ product.name }}</h1>
+      <div [ngClass]="'pdp-price'">$ {{ product.price }}</div>
+      <p [ngClass]="'pdp-desc'">{{ product.description }}</p>
+      <div [ngClass]="'input-group mb-3 pdp-quantity-input-group'">
+        <button [ngClass]="'btn btn-outline-secondary'" type="button" (click)="updateQty(-1)">
+          -
+        </button>
+        <input
+          type="text"
+          [ngClass]="'form-control pdp-quantity-input text-center'"
+          [(ngModel)]="quantity"
+          placeholder=""
+          aria-label="Example text with two button addons"
+        />
+        <button [ngClass]="'btn btn-outline-secondary'" type="button" (click)="updateQty(1)">
+          +
+        </button>
+      </div>
+      <button
+        [ngClass]="'btn btn-primary p-3 fs-5'"
+        type="button"
+        (click)="addToCart()"
+      >
+        Add to cart
+      </button>
+    </div>
+  </div>
+</div>
