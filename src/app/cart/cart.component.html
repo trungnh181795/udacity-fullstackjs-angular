@@ -1,5 +1,5 @@
 <div [ngClass]="'row'">
-  <div [ngClass]="'col-12 col-md-6'">
+  <div [ngClass]="{ 'col-12': true, 'col-md-6': cartItems.length > 0 }">
     <div [ngClass]="'cart-wrapper d-flex flex-column'">
       <h1 [ngClass]="'cart-header w-100 text-center'">Review your cart</h1>
       <div
@@ -34,7 +34,7 @@
       </div>
     </div>
   </div>
-  <div [ngClass]="'col-12 col-md-6'">
+  <div *ngIf="cartItems.length > 0" [ngClass]="'col-12 col-md-6'">
     <div [ngClass]="'cart-wrapper'">
       <h1 [ngClass]="'cart-header w-100 text-center'">Purchase information</h1>
       <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">

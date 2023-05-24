@@ -32,6 +32,10 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
+  setQty(quantity: number): void {
+    this.quantity = quantity
+  }
+
   addToCart() {
     this.cartService.addItemToCart({
       product: this.product!,

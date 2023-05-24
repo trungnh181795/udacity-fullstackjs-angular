@@ -32,7 +32,9 @@ export class CartItemComponent implements OnInit {
     if (this.cartItem) {
       switch (action) {
         case 'dec':
-          this.changeItemQty(this.cartItem?.product.id, -1);
+          if (this.cartItem.quantity > 1) {
+            this.changeItemQty(this.cartItem?.product.id, -1);
+          }
           break;
         case 'inc':
           this.changeItemQty(this.cartItem?.product.id, 1);

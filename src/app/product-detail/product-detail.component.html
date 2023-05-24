@@ -22,6 +22,7 @@
           type="text"
           [ngClass]="'form-control pdp-quantity-input text-center'"
           [(ngModel)]="quantity"
+          (ngModelChange)="setQty($event)"
           placeholder=""
           aria-label="Example text with two button addons"
         />

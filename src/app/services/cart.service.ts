@@ -37,7 +37,10 @@ export class CartService {
       JSON.stringify(this.cartItems.value)
     );
     this.toastr.success(`${product.name} added to cart`, 'Success', {
-      timeOut: 2000,
+      timeOut: 3000,
+      newestOnTop: true,
+      positionClass: 'cus-toast-top-right',
+
     });
   }
 
@@ -46,11 +49,14 @@ export class CartService {
       (item) => item.product.id !== cartItem.product.id
     );
     this.cartItems.next(newItems);
+    localStorage.setItem('storefront-fe-cart', JSON.stringify(newItems))
     this.toastr.success(
       `${cartItem.product.name} removed from cart`,
       'Success',
       {
-        timeOut: 2000,
+        timeOut: 3000,
+        positionClass: 'cus-toast-top-right',
+
       }
     );
   }
